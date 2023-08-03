@@ -86,7 +86,7 @@ class _AddScreenState extends State<AddScreen> {
                   borderRadius: BorderRadius.circular(15.sp),
                   borderSide: BorderSide(width: 2,color: Colors.purple)
                 ),
-                label: Text("Image",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w500),),
+                label: Text("Name",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w500),),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.sp),
                   borderSide: BorderSide(width: 2),

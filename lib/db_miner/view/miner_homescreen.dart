@@ -43,10 +43,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Spacer(),
-                Container(
-                  height: 60,
-                  width: 40.w,
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white30),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed('/addcate',arguments: {"l1":0,"index":null});
+                  },
+                  child: Container(
+                    height: 60,
+                    width: 40.w,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white30),
+                    child: Center(child: Text("Add Category",style: TextStyle(color: Colors.white,fontSize: 20),)),
+                  ),
                 ),
               ],
             ),

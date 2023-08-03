@@ -1,3 +1,4 @@
+import 'package:db_miner/db_miner/view/add_category.dart';
 import 'package:db_miner/db_miner/view/addquote_screen.dart';
 import 'package:db_miner/db_miner/view/miner_homescreen.dart';
 import 'package:db_miner/db_miner/view/show_screen.dart';
@@ -15,6 +16,7 @@ void main()
          '/':(p0) => HomeScreen(),
          '/add':(p0) => AddScreen(),
          '/show':(p0) => ShowScreen(),
+         '/addcate':(p0) => AddCategory(),
        },
      );
    },)
