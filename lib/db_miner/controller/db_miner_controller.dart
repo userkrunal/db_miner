@@ -8,25 +8,14 @@ class DBMinerController extends GetxController
 {
   DB_MinerHelper dbhelper=DB_MinerHelper();
 
-
-  RxList quotesList=[
-    {
-      "quotes":"“We cannot solve problems with the kind of thinking we employed when we came up with them.”",
-      "name":"Albert Einstein",
-      "category":"motivational"
-    },
-    {
-      "quotes":"“We cannot solve problems with the kind of thinking we employed when we came up with them.”",
-      "name":"Albert Einstein",
-      "category":"motivational"
-    },
-    {
-      "quotes":"“We cannot solve problems with the kind of thinking we employed when we came up with them.”",
-      "name":"Albert Einstein",
-      "category":"motivation"
-    },
-  ].obs;
   RxList  categoryList=[].obs;
+  RxList QuoList=[].obs;
+  RxString selectItem = ''.obs;
+  List defaultCategoryList=["Love","Motivation","Sad"];
+  RxList <QuotesModel>quotesList=<QuotesModel>[
+
+  ].obs;
+
 
   Uint8List? imgByte;
   RxList<Map> catList = <Map>[
@@ -34,7 +23,11 @@ class DBMinerController extends GetxController
   ].obs;
   Future<void> load()
   async {
-    quotesList.value!=await dbhelper.categoryread_DB();
+    categoryList.value=await dbhelper.categoryread_DB();
+    if(categoryList.isNotEmpty)
+      {
+        selectItem.value=categoryList[0]['category'];
+      }
   }
 
 

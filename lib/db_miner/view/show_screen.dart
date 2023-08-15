@@ -10,11 +10,19 @@ class ShowScreen extends StatefulWidget {
   State<ShowScreen> createState() => _ShowScreenState();
 }
 
-Map m1=Get.arguments;
+
 
 class _ShowScreenState extends State<ShowScreen> {
 
+  String? rcategory;
+
   DBMinerController controller=Get.put(DBMinerController());
+  @override
+
+  void initState() {
+    rcategory=Get.arguments;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
@@ -33,9 +41,15 @@ class _ShowScreenState extends State<ShowScreen> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
-                    height: 60,
+                    height: 80,
                     width: 100.w,
-                    child: Center(child: Text("${controller.quotesList[index]['quotes']}",style: TextStyle(fontSize: 25,color: Colors.white),)),
+                    child: Column(
+                      children: [
+                        //Text("${controller.quotesList[index]['quotes']}",style: TextStyle(fontSize: 25,color: Colors.white),),
+                        SizedBox(height: 5),
+                        //Text("${controller.quotesList[index]['name']}",style: TextStyle(fontSize: 15,color: Colors.white),),
+                      ],
+                    ),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.purple.shade100),
                   ),
                 );

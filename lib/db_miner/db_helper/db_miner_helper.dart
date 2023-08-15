@@ -74,11 +74,11 @@ class DB_MinerHelper
 
   //---------------------------------categorydatat-------------------------------------------
 
-  Future<void> categoryinsert(CategoryModel model)
+  Future<void> categoryinsert({CategoryModel? model})
   async {
     database=await createDB();
-    await database!.insert("${categorytable}", {
-      "category":model.category,
+    database!.insert("${categorytable}", {
+      "category":model!.category,
       "image":model.image,
     });
   }

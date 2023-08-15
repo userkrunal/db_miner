@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      backgroundColor: Colors.purpleAccent.shade100,
+      backgroundColor: Colors.black87,
       floatingActionButton: FloatingActionButton(onPressed: () {
         Get.toNamed('/add',arguments: {'l1':0,'index':null});
       },child: Icon(Icons.add_circle_outline_outlined),),
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      Get.toNamed('/show',arguments: '${controller.quotesList[index]['category']}');
+                      Get.toNamed('/show',arguments: '${controller.categoryList[index]['category']}');
                     },
                     child: Container(
 
@@ -77,14 +77,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 20,right: 10),
-                            child: Text("${controller.quotesList[index]['category']}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
+                            child: Text("${controller.categoryList[index]['category']}",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),
                           ),
                         ],
                       ),
                     ),
                   ),
                 );
-              },itemCount: controller.quotesList.length),
+              },itemCount: controller.categoryList.length),
             ),
           )
         ],
