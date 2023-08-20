@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:db_miner/db_miner/controller/db_miner_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Color(0xffFFF6E5),
       floatingActionButton: FloatingActionButton(onPressed: () {
         Get.toNamed('/add',arguments: {'l1':0,'index':null});
       },child: Icon(Icons.add_circle_outline_outlined),),
@@ -38,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     height: 60,
                     width: 40.w,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white30),
-                    child: Center(child: Text("Add Quotes",style: TextStyle(fontSize: 20,color: Colors.white),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white),
+                    child: Center(child: Text("Add Quotes",style: TextStyle(fontSize: 20,color: Colors.black),)),
                   ),
                 ),
                 Spacer(),
@@ -50,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Container(
                     height: 60,
                     width: 40.w,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white30),
-                    child: Center(child: Text("Add Category",style: TextStyle(color: Colors.white,fontSize: 20),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white),
+                    child: Center(child: Text("Add Category",style: TextStyle(color: Colors.black,fontSize: 20),)),
                   ),
                 ),
               ],
@@ -60,17 +62,19 @@ class _HomeScreenState extends State<HomeScreen> {
           Expanded(
             child: Obx(
               () =>  GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2), itemBuilder: (context, index) {
+                Random r =Random();
+                controller.imgIndex.value=r.nextInt(controller.imgList.length);
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: InkWell(
                     onTap: () {
-                      Get.toNamed('/show',arguments: '${controller.categoryList[index]['category']}');
+                      Get.toNamed('/show',arguments: controller.categoryList[index]['category']);
                     },
                     child: Container(
 
                       height: 130,
                       width: 130,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),image: DecorationImage(image: AssetImage("assets/images/img_2.png"),fit: BoxFit.fill,opacity: 50)),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),image: DecorationImage(image: AssetImage("${controller.imgList[controller.imgIndex.value]}"),fit: BoxFit.fill,opacity: 50)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         //mainAxisSize:  min,

@@ -21,20 +21,19 @@ class _ShowScreenState extends State<ShowScreen> {
 
   void initState() {
     rcategory=Get.arguments;
+    print('=============================================${rcategory}========');
     super.initState();
+    controller.loadcat(rcategory);
+    print('=========================================================================${controller.quotesList}');
   }
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      backgroundColor: Colors.white,
+
+      backgroundColor: Color(0xffFFF6E5),
       appBar: AppBar(title: Text("Quotes ",style: TextStyle(color: Colors.white),),centerTitle: true,backgroundColor: Colors.purple.shade200,),
       body: Column(
         children: [
-          Container(
-            height: 100,
-            width: 100.w,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.purple),
-          ),
           Expanded(
             child: Obx(
               () =>  ListView.builder(itemBuilder: (context, index) {
@@ -45,12 +44,12 @@ class _ShowScreenState extends State<ShowScreen> {
                     width: 100.w,
                     child: Column(
                       children: [
-                        //Text("${controller.quotesList[index]['quotes']}",style: TextStyle(fontSize: 25,color: Colors.white),),
+                        Text("${controller.quotesList[index]['quotes']}",style: TextStyle(fontSize: 25,color: Colors.black),),
                         SizedBox(height: 5),
-                        //Text("${controller.quotesList[index]['name']}",style: TextStyle(fontSize: 15,color: Colors.white),),
+                        Text("${controller.quotesList[index]['name']}",style: TextStyle(fontSize: 15,color: Colors.black),),
                       ],
                     ),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.purple.shade100),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.white),
                   ),
                 );
               },itemCount: controller.quotesList.length,),

@@ -7,7 +7,7 @@ class QuotesModel
 
 class CategoryModel
 {
-  String? image,category,id;
-  CategoryModel({this.image, this.category,this.id});
+  String? category,id;
+  CategoryModel({ this.category,this.id});
 }
 

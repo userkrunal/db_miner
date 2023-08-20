@@ -34,7 +34,7 @@ class DB_MinerHelper
     String path=join(directory.path,dbpath);
 
     String quotes='CREATE TABLE $quotes_table(id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT, quotes TEXT, name TEXT)';
-    String category='CREATE TABLE $categorytable (id INTEGER PRIMARY KEY AUTOINCREMENT,category TEXT,image BLOB)';
+    String category='CREATE TABLE $categorytable (id INTEGER PRIMARY KEY AUTOINCREMENT,category TEXT)';
     return database= await openDatabase(path,
       version: 1,
       onCreate: (db, version) async {
@@ -59,7 +59,7 @@ class DB_MinerHelper
   Future<List<Map>> read_DB({required category})
   async {
     database= await createDB();
-    String query='SELECT * FROM $quotes_table WHERE category= "$category';
+    String query='SELECT * FROM $quotes_table WHERE category= "$category"';
     List <Map> l1= await database!.rawQuery(query);
     return l1;
   }
@@ -79,7 +79,6 @@ class DB_MinerHelper
     database=await createDB();
     database!.insert("${categorytable}", {
       "category":model!.category,
-      "image":model.image,
     });
   }
 
@@ -100,7 +99,7 @@ class DB_MinerHelper
   Future<Future<int>> update({required QuotesModel model,required id})
   async {
     database = await createDB();
-    return database!.update(quotes_table!, {
+    return database!.update(quotes_table, {
       'name':model.name,
       'quote':model.quotes,
       'category':model.category,

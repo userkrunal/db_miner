@@ -9,12 +9,26 @@ class DBMinerController extends GetxController
   DB_MinerHelper dbhelper=DB_MinerHelper();
 
   RxList  categoryList=[].obs;
-  RxList QuoList=[].obs;
   RxString selectItem = ''.obs;
   List defaultCategoryList=["Love","Motivation","Sad"];
-  RxList <QuotesModel>quotesList=<QuotesModel>[
+  RxList quotesList=[
 
   ].obs;
+
+
+  List imgList=[
+    "assets/bg/img.png",
+    "assets/bg/img_1.png",
+    "assets/bg/img_2.png",
+    "assets/bg/img_3.png",
+    "assets/bg/img_4.png",
+    "assets/bg/img_5.png",
+    "assets/bg/img_6.png",
+    "assets/bg/img_7.png",
+    "assets/bg/img_8.png",
+  ];
+
+  RxInt imgIndex = 3.obs;
 
 
   Uint8List? imgByte;
@@ -33,6 +47,6 @@ class DBMinerController extends GetxController
 
   Future<void> loadcat(category)
   async {
-    quotesList.value!=await DB_MinerHelper.helper.read_DB(category: category);
+    quotesList.value= await DB_MinerHelper.helper.read_DB(category: category);
   }
 }

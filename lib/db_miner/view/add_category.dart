@@ -84,14 +84,13 @@ class _AddCategoryState extends State<AddCategory> {
                   {
                     CategoryModel q=CategoryModel(
                         category: txtCategory.text,
-                       image: txtImage.text);
+                       );
                     DB_MinerHelper.helper.categoryinsert(model:q);
                   }
                   else
                   {
                     CategoryModel q = CategoryModel(
                       category: controller.categoryList[m1['index']]['category'],
-                      image: controller.categoryList[m1['index']]['image'],
                       id: controller.categoryList[m1['index']]['id'],
 
                     );

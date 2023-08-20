@@ -1,3 +1,4 @@
+
 import 'package:db_miner/db_miner/db_helper/db_miner_helper.dart';
 import 'package:db_miner/db_miner/model/quotes_model.dart';
 import 'package:flutter/material.dart';
@@ -151,14 +152,15 @@ class _AddScreenState extends State<AddScreen> {
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-                  // print(
-                  //     '==========================================-------${controller.defaultCategoryList}================');
+
+                   print('==========================================-------${controller.selectItem.value}================');
                   if (m1['l1'] == 0) {
                     QuotesModel q = QuotesModel(
                         category: controller.selectItem.value,
                         name: txtName.text,
                         quotes: txtQuoets.text);
                     DB_MinerHelper.helper.insert(q);
+                    controller.loadcat(controller.selectItem.value);
                   } else {
                     QuotesModel q = QuotesModel(
                       quotes: controller.quotesList[m1['index']]['quotes'],
