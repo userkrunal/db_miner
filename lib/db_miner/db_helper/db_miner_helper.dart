@@ -96,14 +96,14 @@ class DB_MinerHelper
     return database!.delete('$categorytable',where: "id=?",whereArgs: [id]);
   }
 
-  Future<Future<int>> update({required QuotesModel model,required id})
+  Future<Future<int>> update( QuotesModel model)
   async {
     database = await createDB();
     return database!.update(quotes_table, {
       'name':model.name,
       'quote':model.quotes,
       'category':model.category,
-    },where: "id=?",whereArgs: [id]);
+    },where: "id=?",whereArgs: [model.id]);
   }
 
 }

@@ -76,24 +76,7 @@ class _AddScreenState extends State<AddScreen> {
                       borderSide: BorderSide(width: 2),
                     )),
               ),
-              SizedBox(height: 10),
-              // TextFormField(
-              //
-              //   controller: txtCategory,
-              //   decoration: InputDecoration(
-              //     hintText: "Enter category....",
-              //     focusedBorder: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(15.sp),
-              //       borderSide: BorderSide(width: 2,color: Colors.purple)
-              //     ),
-              //     label: Text("Category",style: TextStyle(color: Colors.purple,fontWeight: FontWeight.w500),),
-              //     border: OutlineInputBorder(
-              //       borderRadius: BorderRadius.circular(15.sp),
-              //       borderSide: BorderSide(width: 2),
-              //     )
-              //   ),
-              // ),
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               TextFormField(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -152,8 +135,6 @@ class _AddScreenState extends State<AddScreen> {
               SizedBox(height: 20),
               InkWell(
                 onTap: () {
-
-                   print('==========================================-------${controller.selectItem.value}================');
                   if (m1['l1'] == 0) {
                     QuotesModel q = QuotesModel(
                         category: controller.selectItem.value,
@@ -168,10 +149,9 @@ class _AddScreenState extends State<AddScreen> {
                       name: controller.quotesList[m1['index']]['name'],
                       id: controller.quotesList[m1['index']]['id'],
                     );
-                    // DB_MinerHelper.helper.u
+                     DB_MinerHelper.helper.update(q);
                   }
                   controller.load();
-                  //controller.selectItem.value='';
                   Get.offAllNamed('/');
                 },
                 child: Container(

@@ -28,8 +28,21 @@ class DBMinerController extends GetxController
     "assets/bg/img_8.png",
   ];
 
+
   RxInt imgIndex = 3.obs;
 
+  List bgList=[
+    "assets/img/img.png",
+    "assets/img/img_1.png",
+    "assets/img/img_2.png",
+    "assets/img/img_3.png",
+    "assets/img/img_4.png",
+    "assets/img/img_5.png",
+    "assets/img/img_6.png",
+    "assets/img/img_7.png",
+  ];
+
+  RxInt bgIndex=2.obs;
 
   Uint8List? imgByte;
   RxList<Map> catList = <Map>[
